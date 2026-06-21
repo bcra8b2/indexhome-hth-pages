@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>再次遇见 · 华体会</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f2f4f6;
+            color: #2d3436;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        /* hero */
+        .hero {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2.5rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02), 0 1px 4px rgba(0,0,0,0.04);
+            border: 1px solid #e9edf0;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            color: #1e272e;
+            margin-bottom: 0.5rem;
+        }
+        .hero .sub {
+            font-size: 1.1rem;
+            color: #636e72;
+            max-width: 540px;
+            margin: 0.25rem auto 0.75rem;
+        }
+        .hero .tagline {
+            display: inline-block;
+            background: #ecf0f1;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            color: #2d3436;
+            border: 1px solid #dcdde1;
+        }
+
+        /* card grid */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        @media (min-width: 640px) {
+            .card-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.5rem 1.4rem 1.8rem;
+            border: 1px solid #e3e8eb;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02), 0 1px 3px rgba(0,0,0,0.03);
+            transition: box-shadow 0.15s;
+        }
+        .card:hover {
+            box-shadow: 0 8px 18px rgba(0,0,0,0.04);
+        }
+        .card .emoji-icon {
+            font-size: 2rem;
+            margin-bottom: 0.6rem;
+            display: inline-block;
+        }
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 0.2rem;
+            color: #1e272e;
+        }
+        .card .subhead {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px dashed #eef1f3;
+            padding-bottom: 0.5rem;
+        }
+        .card p {
+            font-size: 0.95rem;
+            color: #2d3436;
+            margin-bottom: 0.3rem;
+        }
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 0.5rem;
+        }
+        .card ul li {
+            font-size: 0.9rem;
+            padding: 0.2rem 0;
+            padding-left: 1.2rem;
+            position: relative;
+            color: #3d4a4e;
+        }
+        .card ul li::before {
+            content: "·";
+            position: absolute;
+            left: 0.2rem;
+            color: #b2bec3;
+            font-weight: bold;
+        }
+        .card.soft-highlight {
+            background: #f9fbfc;
+            border: 1px solid #dde2e5;
+        }
+
+        /* inline link sentence area */
+        .link-note {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.6rem 1.8rem;
+            margin-bottom: 2rem;
+            border: 1px solid #e3e8eb;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            font-size: 1rem;
+            color: #2d3436;
+        }
+        .link-note a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 2px solid #d4dadf;
+            transition: border-color 0.15s;
+        }
+        .link-note a:hover {
+            border-bottom-color: #2c3e50;
+        }
+
+        /* faq-style compact */
+        .faq-compact {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.5rem 1.8rem;
+            margin-bottom: 2rem;
+            border: 1px solid #e3e8eb;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+        .faq-compact h3 {
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: #1e272e;
+        }
+        .faq-item {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f0f2f3;
+        }
+        .faq-item:last-child {
+            border-bottom: 0;
+        }
+        .faq-item .q {
+            font-weight: 500;
+            color: #2c3e50;
+            margin-bottom: 0.15rem;
+        }
+        .faq-item .a {
+            font-size: 0.9rem;
+            color: #636e72;
+        }
+
+        /* footer */
+        .footer-note {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #95a5a6;
+            border-top: 1px solid #e0e5e8;
+            padding-top: 1.8rem;
+            margin-top: 0.8rem;
+        }
+
+        .badge-light {
+            display: inline-block;
+            background: #eef1f3;
+            border-radius: 30px;
+            padding: 0.2rem 0.8rem;
+            font-size: 0.75rem;
+            color: #4a5558;
+            margin-right: 0.4rem;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e8ecef;
+            margin: 1.2rem 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- hero -->
+    <div class="hero">
+        <h1>再次遇见 · 华体会</h1>
+        <p class="sub">一个你收藏过、回来过、还想再停留的地方。</p>
+        <span class="tagline">📌 从一次访问到持续关注</span>
+    </div>
+
+    <!-- 卡片网格: 用途 + 适合人群 -->
+    <div class="card-grid">
+        <!-- 卡片: 用途 -->
+        <div class="card">
+            <div class="emoji-icon">🧭</div>
+            <h3>用途卡片</h3>
+            <div class="subhead">不止一个打开方式</div>
+            <ul>
+                <li>信息浏览与日常参考</li>
+                <li>内容归档与再次查阅</li>
+                <li>兴趣延伸与轻探索</li>
+                <li>收藏夹里的安静角落</li>
+            </ul>
+            <p style="margin-top:0.8rem;font-size:0.9rem;color:#5b6b70;">每次回访，都能找到上次没看完的片段。</p>
+        </div>
+
+        <!-- 卡片: 适合人群 -->
+        <div class="card">
+            <div class="emoji-icon">👥</div>
+            <h3>适合人群</h3>
+            <div class="subhead">谁在持续关注</div>
+            <ul>
+                <li>习惯标记再回看的人</li>
+                <li>喜欢干净浏览体验的朋友</li>
+                <li>偶尔想换个节奏的日常使用者</li>
+                <li>不愿被信息流推着走的人</li>
+            </ul>
+            <p style="margin-top:0.8rem;font-size:0.9rem;color:#5b6b70;">没有通知，没有催促，只有你主动回来看。</p>
+        </div>
+    </div>
+
+    <!-- 自然链接段落 (嵌入华体会) -->
+    <div class="link-note">
+        <p style="margin-bottom:0.5rem;">
+            <span class="badge-light">📎</span> 如果你之前来过这里，可能会记得一些内容片段。
+            很多人选择把 <a href="https://indexhome-hth.com.cn">华体会</a> 放进浏览器的收藏夹，
+            不是因为它做了什么承诺，而是因为它始终安静、干净、值得再次打开。
+        </p>
+        <p style="margin-top:0.8rem;font-size:0.93rem;color:#4b5a5e;">
+            收藏是一个动作，但持续回访是一种习惯。希望每次回来你都能找到一点新的东西，或者只是看看。
+        </p>
+    </div>
+
+    <!-- 额外的卡片: 再次访问的角度 + 收藏心理 (差异化) -->
+    <div class="card-grid" style="margin-bottom:2rem;">
+        <div class="card soft-highlight">
+            <div class="emoji-icon">🔖</div>
+            <h3>关于再次访问</h3>
+            <div class="subhead">你上次来是什么时候？</div>
+            <p style="font-size:0.95rem;">我们不追踪你，但如果你愿意，可以随时回来。页面不会变味，节奏也不会变快。适合那些喜欢「熟悉的界面，未知的内容」的人。</p>
+            <p style="margin-top:0.6rem;font-size:0.9rem;color:#5b6b70;">不用刷新等待，不用猜测变化。</p>
+        </div>
+        <div class="card soft-highlight">
+            <div class="emoji-icon">🌱</div>
+            <h3>收藏与持续关注</h3>
+            <div class="subhead">不是所有收藏夹都会再打开</div>
+            <p style="font-size:0.95rem;">但有些地方，你会下意识点开。不是因为提醒，只是因为记得。文字、版式、信息量——都保持在让人舒服的范围里。</p>
+            <p style="margin-top:0.6rem;font-size:0.9rem;color:#5b6b70;">偶尔回来，像翻开一本没读完的书。</p>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 (保持温和) -->
+    <div class="faq-compact">
+        <h3>❓ 一些你可能想知道的</h3>
+        <div class="faq-item">
+            <div class="q">这个页面会频繁更新吗？</div>
+            <div class="a">不会频繁变动，但会自然生长。保持稳定感，也保留一点新鲜感。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">我为什么要再次访问？</div>
+            <div class="a">没有必须的理由。如果你某天想起这里，欢迎回来看看。内容安静，节奏随你。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">收藏后有什么变化？</div>
+            <div class="a">收藏只是你浏览器里的小标记，页面依然保持原样。我们更希望你是因为喜欢而记住。</div>
+        </div>
+        <div style="margin-top:0.8rem;font-size:0.8rem;color:#7f8c8d;">
+            <span>📌 如果还想了解更多，可以直接访问 <a href="https://indexhome-hth.com.cn" style="text-decoration:none;border-bottom:1px solid #bdc3c7;color:#2d3436;">华体会</a> 。</span>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer-note">
+        <span>—— 从一次访问到持续关注 · 华体会 ——</span>
+    </div>
+
+</div>
+</body>
+</html>
