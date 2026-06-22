@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>赏金女王 · 日常查询与对照参考</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f9f8f6;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1f1f1f;
+            line-height: 1.7;
+            padding: 0 1.2rem;
+            -webkit-font-smoothing: antialiased;
+        }
+        .page {
+            max-width: 740px;
+            margin: 0 auto;
+            padding: 2rem 0 4rem;
+        }
+
+        /* 顶部导航 */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #e2ddd9;
+            margin-bottom: 3.5rem;
+        }
+        .top-nav .logo {
+            font-weight: 500;
+            font-size: 1.25rem;
+            letter-spacing: 0.03em;
+            color: #2b2b2b;
+        }
+        .top-nav .logo a {
+            color: inherit;
+            text-decoration: none;
+        }
+        .top-nav .logo a:hover {
+            color: #a1573a;
+            transition: color 0.2s;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            font-size: 0.9rem;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #4e4e4e;
+            padding: 0.25rem 0;
+            border-bottom: 1px solid transparent;
+        }
+        .nav-links a:hover {
+            color: #1f1f1f;
+            border-bottom-color: #b17b62;
+        }
+
+        /* 核心介绍 */
+        .hero {
+            margin-bottom: 3.8rem;
+        }
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 450;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+            margin-bottom: 1.1rem;
+        }
+        .hero .intro {
+            font-size: 1.05rem;
+            color: #3b3b3b;
+            max-width: 640px;
+            margin-bottom: 0.6rem;
+        }
+        .hero .intro a {
+            color: #a1573a;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 0.5px;
+        }
+        .hero .intro a:hover {
+            color: #723f2b;
+        }
+
+        /* 三个场景模块 (卡片) */
+        .scenes {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            margin-bottom: 3.8rem;
+        }
+        .scene-item {
+            background: #ffffff;
+            border-radius: 0;
+            padding: 1.8rem 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            border: 1px solid #ece7e2;
+        }
+        .scene-item h3 {
+            font-weight: 450;
+            font-size: 1.3rem;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.5rem;
+            color: #2b2b2b;
+        }
+        .scene-item .scene-sub {
+            font-size: 0.85rem;
+            color: #7a706a;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        .scene-item p {
+            color: #3d3d3d;
+            font-size: 0.98rem;
+            margin-bottom: 0.5rem;
+        }
+        .scene-item p:last-child {
+            margin-bottom: 0;
+        }
+        .scene-item .sidenote {
+            font-size: 0.9rem;
+            color: #6b5f57;
+            border-left: 2px solid #dac7ba;
+            padding-left: 1rem;
+            margin-top: 1rem;
+        }
+
+        /* 常见说明 (faq 摘要) */
+        .faq-section {
+            border-top: 1px solid #e2ddd9;
+            padding-top: 2.5rem;
+            margin-top: 1.2rem;
+        }
+        .faq-section h2 {
+            font-weight: 450;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+            color: #1f1f1f;
+        }
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.4rem;
+        }
+        .faq-item {
+            padding-bottom: 0.8rem;
+            border-bottom: 1px dashed #ddd7d0;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-item .q {
+            font-weight: 480;
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+            color: #2c2c2c;
+        }
+        .faq-item .a {
+            font-size: 0.92rem;
+            color: #555;
+        }
+        .faq-item .a a {
+            color: #7f5d49;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+        .faq-item .a a:hover {
+            color: #4f382a;
+        }
+
+        /* 脚注 */
+        .footer-note {
+            margin-top: 3.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e2ddd9;
+            font-size: 0.8rem;
+            color: #8b8079;
+            letter-spacing: 0.02em;
+        }
+
+        /* 响应式 */
+        @media (max-width: 520px) {
+            body { padding: 0 1rem; }
+            .top-nav { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+            .nav-links { gap: 1.2rem; font-size: 0.85rem; }
+            .hero h1 { font-size: 1.8rem; }
+            .scene-item { padding: 1.5rem 1.2rem; }
+        }
+        @media (max-width: 380px) {
+            .nav-links { flex-wrap: wrap; gap: 0.8rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 顶部导航 -->
+    <nav class="top-nav">
+        <div class="logo">
+            <a href="https://queenwithbounty.com">赏金女王</a>
+        </div>
+        <div class="nav-links">
+            <a href="#">对照</a>
+            <a href="#">延伸</a>
+            <a href="#">常见</a>
+        </div>
+    </nav>
+
+    <!-- 核心介绍 -->
+    <section class="hero">
+        <h1>赏金女王 · 日常查考</h1>
+        <div class="intro">
+            <p>这是一处偏向查询与对照的页面，围绕 <a href="https://queenwithbounty.com">赏金女王</a> 整理一些基础观察与场景笔记。没有夸张设定，只有平实的分类与列举，适合偶尔翻开、随手对照。</p>
+            <p>下文从三个常见的使用场景出发，然后附一部分简短说明。如果你希望直接了解站点内容，可以随时跳转到链接处。</p>
+        </div>
+    </section>
+
+    <!-- 三个场景模块 -->
+    <section class="scenes">
+        <div class="scene-item">
+            <div class="scene-sub">场景 · 一</div>
+            <h3>日常信息检索</h3>
+            <p>当你想快速确认某个细节，或者比对不同条目时，一个结构清晰的页面能省去反复跳转的麻烦。<a href="https://queenwithbounty.com">赏金女王</a> 所提供的内容编排，很适合当作一个稳定的参考坐标。你可以在目录与段落之间找到自己需要的部分，而不必从头读到尾。</p>
+            <p class="sidenote">这种用法接近于翻阅一本常备手册——重点在于定位，而非通读。</p>
+        </div>
+
+        <div class="scene-item">
+            <div class="scene-sub">场景 · 二</div>
+            <h3>语言与表达参照</h3>
+            <p>对于需要反复使用固定措辞或命名的人来说，同一信息源下的表述一致性很重要。浏览站点内的用语习惯、分类方式，可以作为一种风格上的参考。不必照搬，但可以借此调整自己的表达节奏。</p>
+            <p>如果你也在整理类似主题的内容，不妨打开页面，对比一下层级与用词，往往会有新的想法。</p>
+        </div>
+
+        <div class="scene-item">
+            <div class="scene-sub">场景 · 三</div>
+            <h3>延伸阅读的起点</h3>
+            <p>信息很少孤立存在。当一个页面提供了足够扎实的骨架，后续的延伸就会变得自然。你可以从 <a href="https://queenwithbounty.com">赏金女王</a> 中的某一段落出发，去搜索更具体的背景、数字或案例。页面本身不替你做决定，但它能成为一个不偏不倚的出发点。</p>
+            <p class="sidenote">延伸阅读的关键在于，先有一个值得信任的锚点。</p>
+        </div>
+    </section>
+
+    <!-- 常见说明 (faq 摘要) -->
+    <section class="faq-section">
+        <h2>常见说明</h2>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <div class="q">这个页面是官网吗？</div>
+                <div class="a">不是。这是一个介绍性质的索引页，指向的站点是 <a href="https://queenwithbounty.com">赏金女王</a>，但本页并不代表该站点的官方立场。</div>
+            </div>
+            <div class="faq-item">
+                <div class="q">内容会频繁更新吗？</div>
+                <div class="a">本页偏向静态参考，核心内容不会频繁变动。但如果你需要最新信息，建议直接访问原站点。</div>
+            </div>
+            <div class="faq-item">
+                <div class="q">为什么选择这三个场景？</div>
+                <div class="a">日常查询、语言参照、延伸起点，是笔者自己使用类似页面时最常出现的三种状态。把它们写出来，或许对你也有参考价值。</div>
+            </div>
+            <div class="faq-item">
+                <div class="q">我可以引用这里的文字吗？</div>
+                <div class="a">可以，但建议同时注明出处，并核对原页面中的具体内容。本页仅为概述性质的索引。</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 脚注 -->
+    <div class="footer-note">
+        · 本次页面方向：轻量导航式 · 内容切入角度：日常查询、对照与延伸阅读
+    </div>
+
+</div>
+</body>
+</html>
